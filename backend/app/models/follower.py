@@ -1,5 +1,6 @@
 from app.database import db
 from datetime import datetime
+from sqlalchemy import func
 class Follower(db.Model):
     __tablenmae__ = 'followers'
     id = db.Column(db.Integer, primary_key=True)
