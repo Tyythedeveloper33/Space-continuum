@@ -5,9 +5,8 @@ class Event(db.Model):
     __tablename__ = 'events'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id =db.Column(db.Integer,ForiegnKey=('users.id'), nullable=False)
-    name = db.Column(db.String, unique=True, nullable=False)
-    location_id = db.Column(db.Integer, ForiegnKey=('locations.id'), nullable=False)
+    user_id =db.Column(db.Integer,db.ForeignKey('users.id'), nullable=False)
+    location_id = db.Column(db.Integer,db.ForeignKey('locations.id'), nullable=False)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     event_time = db.Column(db.DateTime, nullable=False)

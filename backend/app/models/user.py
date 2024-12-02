@@ -7,12 +7,14 @@ class User(db.Model):
     email = db.Column(db.String, unique=True, nullable=False)
     username = db.Column(db.String, unique=True, nullable=False)
     hashed_password = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=func.now())
-    updated_at = db.Column(db.DateTime, server_onupdate=func.now())
+    bio = db.Column(db.String, nullable=True)
+    avatar_url = db.Column(db.String, nullable=True)
+    created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
+    updated_at = db.Column(db.DateTime, server_onupdate=func.now(), nullable=False)
 
-  # Relationship to Profile
-    profile = db.relationship('Profile', back_populates='user', uselist=False)
+
     # relationship to Event
-    events = db.relationship('Event', backref='user')
+    events = db.relationship('Event', backref='users')
+    locations = db.relationship('Location', backref="users")
     def __repr__(self):
         return '<User %r>' % self.username
