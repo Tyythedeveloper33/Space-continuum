@@ -1,6 +1,6 @@
 from app.database import db
 
-class Profiles(db.Model):
+class Profile(db.Model):
     __tablename__ = 'Profiles'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -12,4 +12,4 @@ class Profiles(db.Model):
     password = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<Profile %r>' % self.username
