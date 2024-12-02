@@ -13,6 +13,9 @@ class Event(db.Model):
     event_time = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_onupdate=func.now())
+      # Relationships
+    user = db.relationship('User', backref='events')  # Relationship to User
+    location = db.relationship('Location', backref='events')  # Relationship to Location
 
     def __repr__(self):
         return '<Location %r>' % self.name

@@ -1,17 +1,17 @@
 from app.database import db
 from sqlalchemy import func
-class Location(db.Model):
-    __tablename__ = 'locations'
+class Comment(db.Model):
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, unique=True, nullable=False)
-    latitude = db.Column(db.Float)
-    longitude = db.Column(db.Float)
-    description = db.Column(db.String)
+    description = db.Column(db.String, nullable=False)
+    rating = db.Column(db.Float, nullable=False)
+    likes = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_onupdate=func.now())
     # Relationship to Event
-    events = db.relationship('Event', backref='location')  
+    event = db.relationship('Event', backref='comment')
+
 
     def __repr__(self):
         return '<Location %r>' % self.name
