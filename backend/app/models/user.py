@@ -9,8 +9,8 @@ class User(db.Model):
     hashed_password = db.Column(db.String, nullable=False)
     bio = db.Column(db.String, nullable=True)
     avatar_url = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.DateTime, server_default=func.now(), nullable=False)
-    updated_at = db.Column(db.DateTime, server_onupdate=func.now(), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now(), nullable=False)
+    updated_at = db.Column(db.DateTime, server_onupdate=db.func.now(), nullable=False)
 
 
     # relationship to Event

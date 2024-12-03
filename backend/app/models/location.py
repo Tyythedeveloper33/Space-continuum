@@ -1,5 +1,5 @@
 from app.database import db
-from sqlalchemy import func
+
 class Location(db.Model):
     __tablename__ = 'locations'
 
@@ -9,8 +9,8 @@ class Location(db.Model):
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
     description = db.Column(db.String)
-    created_at = db.Column(db.DateTime, server_default=func.now())
-    updated_at = db.Column(db.DateTime, server_onupdate=func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_onupdate=db.func.now())
     # Relationship to Event
     events = db.relationship('Event', backref='locations')
 

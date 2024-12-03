@@ -1,5 +1,5 @@
 from app.database import db
-from sqlalchemy import func
+
 class Comment(db.Model):
     __tablename__ = 'comments'
 
@@ -8,8 +8,8 @@ class Comment(db.Model):
     description = db.Column(db.String, nullable=False)
     rating = db.Column(db.Float, nullable=False)
     likes = db.Column(db.Integer, server_default=0)
-    created_at = db.Column(db.DateTime, server_default=func.now())
-    updated_at = db.Column(db.DateTime, server_onupdate=func.now())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_onupdate=db.func.now())
     # Relationship to Event
     event = db.relationship('Event', backref='comments')
 
